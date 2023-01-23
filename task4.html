@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .btn{
+            background-color: red;
+            -webkit-text-fill-color: red;
+        }
+      
+    </style>
+</head>
+<body style="text-align: center;">
+     
+     <h1 > Form </h1>
+    <input type ="text" placeholder="full name">
+    <button>add</button>
+    
+ <div >
+    <div>
+        <h3  > saved </h3>
+        <ul id="Lsaved">
+            
+
+        </ul>
+    </div>
+        <div id="box">
+            <h3 >vaccinated</h3>
+            <ul id="Lvacc">
+                
+    
+            </ul>
+    
+        </div>
+    </div>
+
+    
+  
+
+    <script>
+        let input = document.querySelector("input");
+        let button = document.querySelector("button");
+        let list1 = document.querySelector("#Lsaved");
+        let list2 = document.querySelector("#Lvacc");
+        button.addEventListener("click",addperso);
+i=0;
+        function addperso() {
+            if (input.value =="") {
+          alert("No empty input please ");
+          return;
+        }
+        let li = document.createElement("li");
+        li.id = "perso" + i;
+        i++;
+        let span = document.createElement("span");
+        let spanimg = document.createElement("span");
+
+        span.innerHTML = input.value;
+        let button2 = document.createElement("button");
+        button2.innerText = "X";
+        
+        button2.addEventListener("click", vacc_del);
+        li.appendChild(span);
+        li.appendChild(button2);
+        list1.appendChild(li); 
+        input.value="";
+       }
+
+
+       function vacc_del(e){
+    let L_id= e.target.parentElement.parentElement.id;
+    let id_elt = e.target.parentElement.id;
+    let del_elt = document.getElementById(id_elt);
+    let elt =document.getElementById(id_elt);
+    del_elt.remove();
+    if(L_id=="Lsaved"){  
+        
+         e.target.className="btn";
+         list2.appendChild(elt);
+    }
+       }
+       
+       
+    
+
+        
+
+    </script>
+</body>
+</html>

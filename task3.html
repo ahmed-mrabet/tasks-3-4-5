@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>list APP</h1>
+    <input type="text"/>
+    <button>add <p style="display: inline;"></p> to the list</button>
+    <ul>
+        
+    </ul>
+
+
+ <script>
+    let input = document.querySelector("input");
+    let button = document.querySelector("button");
+    let list = document.querySelector("ul");
+    let p = document.querySelector("p");
+
+    button.addEventListener("click",handleAjout);
+    input.addEventListener("keyup",handleChange);   
+    input.addEventListener("keypress", function (event) {
+    if (event.keyCode == "13") {
+        handleAjout();
+    }
+  });
+     
+    
+    
+    function handleAjout(){
+        if (input.value =="") {
+          alert("Input empty, please type something !");
+          return;
+        }
+       
+        list.innerHTML += `<li>${input.value}</li>`;
+        input.value="";
+    }
+    function handleChange(){
+        p.textContent= input.value;
+    }
+ 
+
+ </script>
+</body>
+</html>
+
